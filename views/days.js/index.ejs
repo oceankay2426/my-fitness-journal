@@ -4,15 +4,16 @@
   <thead>
     <tr>
       <th>Day</th>
-      <th>Release<br>Year</th>
+      <th>achievements</th>
+      <th>mood</th>
       <th></th>
     </tr>
   </thead>
   <tbody>
     <% days.forEach(function(d) { %>
       <tr>
-        <td><%= d.title %></td>
-        <td><%= d.releaseYear %></td>
+        <td><%= d.date %></td>
+        <td><%= d.achievements %></td>
         <td><a href="/days/<%= d._id %>">DAY DETAILS</a></td>
       </tr>
       <% }); %>
