@@ -1,27 +1,32 @@
 <%- include('../partials/header') %>
 
-
-
-
-
-<table id="list">
-  <thead>
-    <tr>
-      <th>Day</th>
-      <th>achievements</th>
-      <th>mood</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% entries.forEach(function(entry) { %>
+  <h2>
+    <a href="/entries?year=<%= year %>&month=<%= month - 1 %>">◀</a>
+    <%= monthNames[month] %>, <%= year %>
+        <a href="/entries?year=<%= year %>&month=<%= month + 1 %>">▶</a>
+  </h2>
+  <table id="list">
+    <thead>
       <tr>
-        <td><%= entry.date %></td>
-        <td><%= entry.achievements %></td>
-        <td><a href="/entries/<%= entry._id %>">Exercise DETAILS</a></td>
+        <th>Day</th>
+        <th>achievements</th>
+        <th>mood</th>
+        <th></th>
       </tr>
-      <% }); %>
+    </thead>
+    <tbody>
+      <% entries.forEach(function(entry) { %>
+        <tr>
+          <td>
+            <%= entry.date %>
+          </td>
+          <td>
+            <%= entry.achievements %>
+          </td>
+          <td><a href="/entries/<%= entry._id %>">Exercise DETAILS</a></td>
+        </tr>
+        <% }); %>
     </tbody>
   </table>
-  
-<%- include('../partials/footer') %>
+
+  <%- include('../partials/footer') %>

@@ -4,9 +4,8 @@ const Schema = mongoose.Schema;
 
 
 const entrySchema = new Schema({
-    exercises: {
-        type: String,
-        enum: ['handstand', 'lungs', 'squats']
+   date: {type: Date, required: true
+    
     },
 }, {
     timestamps: true

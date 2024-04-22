@@ -7,6 +7,7 @@ const passport = require('passport');
 router.get('/', function (req, res, next) {
   res.render('home', { title: 'My Fitness Journal' });
 });
+// GET /entries (index function)
 
 router.get('/auth/google', passport.authenticate(
   'google',

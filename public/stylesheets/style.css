@@ -9,20 +9,21 @@ body {
   height: 100vh;
   display: grid;
   grid-template-rows: 50px 1fr 50px;
-  grid-template-areas: 
+  grid-template-areas:
     "nav"
     "main"
     "footer"
 }
 
-body > nav {
+body>nav {
   grid-area: nav;
   background-color: #B8C0C2;
   display: flex;
   justify-content: flex-end;
   align-items: center;
 }
-body > footer {
+
+body>footer {
   grid-area: footer;
   background-color: #B8C0C2;
   display: flex;
@@ -30,13 +31,13 @@ body > footer {
   align-items: center;
 }
 
-h1 > img {
+h1>img {
   width: 67px;
   object-fit: contain;
   margin-right: auto;
 }
 
-body > main {
+body>main {
   grid-area: main;
   display: flex;
   flex-direction: column;
@@ -55,4 +56,23 @@ body > main {
 
 .login img {
   height: 30px;
+}
+
+section {
+  display: grid;
+  grid-template-columns: repeat(7, auto);
+  gap: 1vmin;
+}
+
+section >div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 10vmin;
+  width: 10vmin;
+  border: 0.5vmin solid blue;
+}
+section > div:nth-child(n+1):nth-child(-n+7) {
+  background-color: blue;
+  color: white;
 }
