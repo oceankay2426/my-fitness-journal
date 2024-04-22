@@ -1,12 +1,13 @@
 var express = require('express');
 var router = express.Router();
+const daysCtrl = require('../controllers/entries');
 const passport = require('passport');
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-  res.render('/', { title: 'My Fitness Journal' });
+  res.render('home', { title: 'My Fitness Journal' });
 });
-router.get('/', daysCtrl.index);
+
 router.get('/auth/google', passport.authenticate(
   'google',
   {
@@ -17,8 +18,8 @@ router.get('/auth/google', passport.authenticate(
 router.get('/oauth2callback', passport.authenticate(
   'google',
   {
-    successRedirect: '/days',
-    failureRedirect: '/days'
+    successRedirect: '/entries',
+    failureRedirect: '/'
   }
 ));
 router.get('/logout', function (req, res) {

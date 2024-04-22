@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 
 
-const daySchema = new Schema({
+const entrySchema = new Schema({
     exercises: {
         type: String,
         enum: ['handstand', 'lungs', 'squats']
@@ -12,4 +12,4 @@ const daySchema = new Schema({
     timestamps: true
 }
 );
-module.exports = mongoose.model('Day', daySchema);
+module.exports = mongoose.model('Entry', entrySchema);

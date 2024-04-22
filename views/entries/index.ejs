@@ -1,5 +1,9 @@
 <%- include('../partials/header') %>
-<header>Daily Log</header>
+
+
+
+
+
 <table id="list">
   <thead>
     <tr>
@@ -10,11 +14,11 @@
     </tr>
   </thead>
   <tbody>
-    <% days.forEach(function(d) { %>
+    <% entries.forEach(function(entry) { %>
       <tr>
-        <td><%= d.date %></td>
-        <td><%= d.achievements %></td>
-        <td><a href="/days/<%= d._id %>">DAY DETAILS</a></td>
+        <td><%= entry.date %></td>
+        <td><%= entry.achievements %></td>
+        <td><a href="/entries/<%= entry._id %>">Exercise DETAILS</a></td>
       </tr>
       <% }); %>
     </tbody>
