@@ -1,5 +1,23 @@
 <%- include('./partials/header') %>
 
 <h2>Log</h2>
-
+v\<table id="list">
+    <thead>
+      <tr>
+        <th>Day</th>
+        <th>achievements</th>
+        <th>mood</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% days.forEach(function(d) { %>
+        <tr>
+          <td><%= d.date %></td>
+          <td><%= d.achievements %></td>
+          <td><a href="/days/<%= d._id %>">DAY DETAILS</a></td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
 <%- include('./partials/footer') %>
