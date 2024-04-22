@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 
 
-const exercieSchema = new Schema({
+const exerciseSchema = new Schema({
     title: { type: String, required: true },
 }, {
     timestamps: true
