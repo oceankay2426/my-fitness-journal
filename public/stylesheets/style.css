@@ -17,15 +17,16 @@ body {
 
 body>nav {
   grid-area: nav;
-  background-color: #B8C0C2;
+  background-color: limegreen;
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  grid-template-rows: auto;
 }
 
 body>footer {
   grid-area: footer;
-  background-color: #B8C0C2;
+  background-color: limegreen;
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -35,6 +36,9 @@ h1>img {
   width: 67px;
   object-fit: contain;
   margin-right: auto;
+}
+h2 {
+
 }
 
 body>main {

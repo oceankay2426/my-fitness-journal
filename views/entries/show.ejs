@@ -1,23 +1,4 @@
 <%- include('../partials/header') %>
-<header>Daily Log</header>
-<table id="list">
-  <thead>
-    <tr>
-      <th>Day</th>
-      <th>achievements</th>
-      <th>mood</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% days.forEach(function(d) { %>
-      <tr>
-        <td><%= d.date %></td>
-        <td><%= d.achievements %></td>
-        <td><a href="/days/<%= d._id %>">DAY DETAILS</a></td>
-      </tr>
-      <% }); %>
-    </tbody>
-  </table>
+<header>Journal your progress</header>
   
 <%- include('../partials/footer') %>
