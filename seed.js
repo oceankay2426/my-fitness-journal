@@ -2,16 +2,22 @@ require('dotenv').config();
 require('./config/database');
 
 const Exercise = require('./models/exercise');
-
-
+const Entry = require('./models/entry');
 const data = require('./data');
-// await needs an async function - use an async IIFE!
-(async function() {
+
+console.log(data);
+
+(async function () {
     let results = await Exercise.deleteMany({});
-    // results will be whatever the promise
-    // returned by the deleteMany method resolves to
     console.log(results);
-    
-    // Lastly, use process.exit() to "cleanly" shut down the Node program
+    results = await Entry.deleteMany({});
+    console.log(results);
+    const exercises = await Exercise.create(data.exercises);
+    console.log(exercises);
+
+
+
+
+
     process.exit();
-  })();
+})();
