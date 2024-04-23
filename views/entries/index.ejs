@@ -5,6 +5,25 @@
     <%= monthNames[month] %>, <%= year %>
         <a href="/entries?year=<%= year %>&month=<%= month + 1 %>">▶</a>
   </h2>
+<h3>
+  <br><br>Update your journal here
+</h3>
+  <form id="add-review-form" method="POST"
+    action="/entries/<%= entries._id %>/entries">
+    <label>Exercises:</label>
+    <textarea name="content">
+    </textarea>
+    <select name="Mood level">
+      <option value="happy">happy</option>
+      <option value="angry">angry</option>
+      <option value="tired" selected>tired</option>
+    </select>
+    <input type="submit" value="Add To Log">
+  </form>
+
+
+
+<% if (entries.exercises) { %>
   <table id="list">
     <thead>
       <tr>
@@ -28,5 +47,7 @@
         <% }); %>
     </tbody>
   </table>
-
+  <% } else { %>
+    <h4>Nothing logged yet</h4>
+    <% } %>
   <%- include('../partials/footer') %>
