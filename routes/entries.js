@@ -9,5 +9,6 @@ router.get('/', entriesCtrl.index);
 //GET /entries/:id/edit
 router.get('/:candy/edit', entriesCtrl.edit);
 // PUT /entries/:candy
+router.put('/:candy', entriesCtrl.update);
 router.delete('/:cookies', entriesCtrl.delete);
 module.exports = router;

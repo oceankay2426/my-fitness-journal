@@ -13,7 +13,8 @@ module.exports = {
   index,
   create,
   delete: deleteEntry,
-  edit
+  edit,
+  update
 };
 
 async function index(req, res) {
@@ -26,7 +27,7 @@ async function index(req, res) {
     year++;
     month = 0;
   }
-  
+
   // Default to today's year and month if not specified
   if (!year) {
     const today = new Date();
@@ -36,9 +37,9 @@ async function index(req, res) {
   const daysInMo = new Date(year, month + 1, 0).getDate();
   const startDate = new Date(year, month, 1);
   const endDate = new Date(year, month, daysInMo);
-  const entries = await Entry.find({date: {$gte: startDate, $lte: endDate}}).populate("exercise");
+  const entries = await Entry.find({ date: { $gte: startDate, $lte: endDate } }).populate("exercise");
   const exercises = await Exercise.find({});
-  res.render('entries/index', { title: 'MONTHLY LOG', entries, year, month, monthNames, exercises});
+  res.render('entries/index', { title: 'MONTHLY LOG', entries, year, month, monthNames, exercises });
 }
 
 async function create(req, res) {
@@ -56,12 +57,26 @@ async function create(req, res) {
 }
 
 async function deleteEntry(req, res) {
-  await Entry.findOneAndDelete( {_id: req.params.cookies, user: req.user._id});
+  await Entry.findOneAndDelete({ _id: req.params.cookies, user: req.user._id });
   res.redirect('/entries');
 }
 
 async function edit(req, res) {
   const entry = await Entry.findById(req.params.candy).populate('exercise');
   const exercises = await Exercise.find({});
-  res.render('entries/edit', {title: 'Edit Entry', entry, exercises})
+  res.render('entries/edit', { title: 'Edit Entry', entry, exercises })
+}
+
+async function update(req, res) {
+  try {
+    const updatedEntry = await Entry.findOneAndUpdate(
+      {_id: req.params.candy, user: req.user._id},
+      req.body,
+    
+      {new: true}
+    );
+  } catch (e) {
+    console.log(e.message);
+  }
+  return res.redirect('/entries');
 }

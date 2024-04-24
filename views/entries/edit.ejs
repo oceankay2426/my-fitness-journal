@@ -1,6 +1,6 @@
 <%- include('../partials/header') %>
 
-<form method="PUT" action="/entries/<%= entry._id %>?_method=PUT">
+<form method="POST" action="/entries/<%= entry._id %>?_method=PUT">
     <label>Day:</label>
     <div>
         <% const day = entry.date.getDate() %>
@@ -54,7 +54,7 @@
     </select>
     <label>ADD NOTES/REPS:</label>
     <textarea name="notes"><%= entry.notes %></textarea>
-    <input type="submit" value="Add To Log">
+    <input type="submit" value="SAVE">
   </form>
 
 <%- include('../partials/footer') %>
