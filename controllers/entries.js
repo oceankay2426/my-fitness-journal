@@ -21,7 +21,7 @@ async function index(req, res) {
     year++;
     month = 0;
   }
-  
+
   // Default to today's year and month if not specified
   if (!year) {
     const today = new Date();
@@ -31,31 +31,34 @@ async function index(req, res) {
   const daysInMo = new Date(year, month + 1, 0).getDate();
   const startDate = new Date(year, month, 1);
   const endDate = new Date(year, month, daysInMo);
-  const entries = await Entry.find({date: {$gte: startDate, $lte: endDate}});
+  const entries = await Entry.find({ date: { $gte: startDate, $lte: endDate } });
   res.render('entries/index', { title: 'MONTHLY LOG', entries, year, month, monthNames });
 };
-
 async function create(req, res) {
-  const entry = await Entry.findById(req.params.id);
-  //We can push (or unshift) subdocs into Mongoose arrays
-  entry. exercise.splice(req.body);
-  try {
-    // Save any changes made to the entry doc
-    await entry.save();
-  } catch (err) {
-    console.log(err);
+
+  if (req.body.enetries) req.body.enetries = req.body.enetries.split(/\s*,\s*/);
+  for (let key in req.body) {
+    if (req.body[key] === '') delete req.body[key];
   }
-  // Step 5:  Respond to the Request (redirect if data has been changed)
-  res.redirect(`/entries${Entry._id}`);
+  try {
+    await Entry.create(req.body);
+
+    res.redirect('/entries');  // Update this line
+  } catch (err) {
+    // Typically some sort of validation error
+    console.log(err);
+    res.render('entries/index', { errorMsg: err.message });
+  }
 }
+
 async function update(req, res) {
   try {
     const updatedEntry = await Entry.findOneAndUpdate(
-      {_id: req.params.id, userRecommending: req.user._id},
+      { _id: req.params.id, userRecommending: req.user._id },
       // update object with updated properties
       req.body,
       // options object {new: true} returns updated doc
-      {new: true}
+      { new: true }
     );
     return res.redirect(`/entries/${updatedEntry._id}`);
   } catch (e) {
