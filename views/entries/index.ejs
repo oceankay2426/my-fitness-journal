@@ -1,22 +1,16 @@
 <%- include('../partials/header') %>
 
-  <h2>
-    <a href="/entries?year=<%= year %>&month=<%= month - 1 %>">◀</a>
-    <%= monthNames[month] %>, <%= year %>
-        <a href="/entries?year=<%= year %>&month=<%= month + 1 %>">▶</a>
-  </h2>
-  <h3>
-    <br><br>Update your journal here
-  </h3>
-  <h3>List of Exercises</h3>
-  <form id="add-review-form" method="POST" action="/entries">
-    <input type="hidden" value="<%= year %>" name="year" />
-    <input type="hidden" value="<%= month %>" name="month" />
-    <label>Day:</label>
-    <div>
-      <select name="day">
-        <option value="1" selected>1</option>
-        <option value="2">2</option>
+<h3>
+  <br><br>Update Your Journal
+</h3>
+<form id="add-review-form" method="POST" action="/entries">
+  <input type="hidden" value="<%= year %>" name="year" />
+  <input type="hidden" value="<%= month %>" name="month" />
+  <label>Day:</label>
+  <div>
+    <select name="day">
+      <option value="1" selected>1</option>
+      <option value="2">2</option>
         <option value="3">3</option>
         <option value="4">4</option>
         <option value="5">5</option>
@@ -48,14 +42,14 @@
         <option value="31">31</option>
       </select>
     </div>
-
+    
     <label>Exercises:</label>
     <select name="exercise">
       <%- exercises.map(e=>
-        `<option value="${e._id}">${e.exercise}</option>`
-        ).join('') %>
+      `<option value="${e._id}">${e.exercise}</option>`
+      ).join('') %>
     </select>
-
+    
     <label>Mood Level</label>
     <select name="mood">
       <option value="happy">happy</option>
@@ -66,9 +60,15 @@
     <textarea name="notes"></textarea>
     <input type="submit" value="Add To Log">
   </form>
-
-
+  
+  <h2>
+    <a href="/entries?year=<%= year %>&month=<%= month - 1 %>">◀</a>
+    <%= monthNames[month] %>, <%= year %>
+        <a href="/entries?year=<%= year %>&month=<%= month + 1 %>">▶</a>
+  </h2>
+  
   <% if (entries) { %>
+    <h4>List of Exercises</h4>
     <table id="list">
       <thead>
         <tr>

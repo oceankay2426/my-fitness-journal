@@ -4,6 +4,13 @@
   color: #424748;
 }
 
+p {
+  color: limegreen;
+  text-align: center;
+  background-color: blue;
+
+}
+
 body {
   margin: 0;
   height: 100vh;
@@ -32,21 +39,14 @@ body>footer {
   align-items: center;
 }
 
-h1>img {
-  width: 67px;
-  object-fit: contain;
-  margin-right: auto;
-}
-h2 {
-
-}
 
 body>main {
   grid-area: main;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #E8ECEB;
+  background-image: url("https://i.imgur.com/6ZSIhAm.jpeg");
+  background-size: cover;
   padding: 20px;
   overflow-y: scroll;
 }
@@ -62,3 +62,16 @@ body>main {
   height: 30px;
 }
 
+h1>img {
+  width: 67px;
+  object-fit: contain;
+  margin-right: auto;
+}
+
+h3 {
+  grid-area: footer;
+  color: limegreen;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
