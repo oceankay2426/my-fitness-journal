@@ -45,8 +45,10 @@ app.use(function (req, res, next) {
   next();
 });
 
+const ensureLoggedIn = require('./config/ensureLoggedIn');
+
 app.use('/', indexRouter);
-app.use('/entries', entriesRouter);
+app.use('/entries', ensureLoggedIn, entriesRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

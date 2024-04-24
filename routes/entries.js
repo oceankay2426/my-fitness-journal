@@ -6,5 +6,5 @@ const entriesCtrl = require('../controllers/entries');
 router.post('/', entriesCtrl.create);
 // GET /entries (index function)
 router.get('/', entriesCtrl.index);
-	
+router.delete('/:cookies', entriesCtrl.delete);
 module.exports = router;

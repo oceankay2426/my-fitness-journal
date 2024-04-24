@@ -1,3 +1,4 @@
+const entry = require('../models/entry');
 const Entry = require('../models/entry');
 const exercise = require('../models/exercise');
 const Exercise = require('../models/exercise');
@@ -10,7 +11,8 @@ const monthNames = [
 
 module.exports = {
   index,
-  create
+  create,
+  delete: deleteEntry
 };
 
 async function index(req, res) {
@@ -49,4 +51,9 @@ async function create(req, res) {
     console.log(err);
   }
   res.redirect(`/entries`);
+}
+
+async function deleteEntry(req, res) {
+  await Entry.findOneAndDelete( {_id: req.params.cookies, user: req.user._id});
+  res.redirect('/entries');
 }

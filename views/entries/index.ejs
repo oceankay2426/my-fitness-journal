@@ -48,14 +48,13 @@
         <option value="31">31</option>
       </select>
     </div>
+
     <label>Exercises:</label>
     <select name="exercise">
       <%- exercises.map(e=>
         `<option value="${e._id}">${e.exercise}</option>`
         ).join('') %>
     </select>
-
-
 
     <label>Mood Level</label>
     <select name="mood">
@@ -65,6 +64,7 @@
     </select>
     <input type="submit" value="Add To Log">
   </form>
+
 
 
 
@@ -82,7 +82,7 @@
         <% entries.forEach(function(entry) { %>
           <tr>
             <td>
-              <%= entry.date %>
+              <%= entry.date.toLocaleDateString() %>
             </td>
             <td>
               <%= entry.exercise.exercise %>
@@ -90,7 +90,12 @@
             <td>
               <%= entry.mood %>
             </td>
-            <td><a href="/entries/<%= entry._id %>">Exercise DETAILS</a></td>
+            <td>
+              <a href="/entries/<%= entry._id %>">DETAILS</a>
+              <form action="/entries/<%= entry._id %>?_method=DELETE" method="POST" class="delete-form">
+                <button type="submit">X</button>
+              </form>
+            </td>
           </tr>
           <% }); %>
       </tbody>
