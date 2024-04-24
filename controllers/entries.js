@@ -12,7 +12,8 @@ const monthNames = [
 module.exports = {
   index,
   create,
-  delete: deleteEntry
+  delete: deleteEntry,
+  edit
 };
 
 async function index(req, res) {
@@ -36,9 +37,10 @@ async function index(req, res) {
   const startDate = new Date(year, month, 1);
   const endDate = new Date(year, month, daysInMo);
   const entries = await Entry.find({date: {$gte: startDate, $lte: endDate}}).populate("exercise");
-  const exercises = await Exercise.find()
+  const exercises = await Exercise.find({});
   res.render('entries/index', { title: 'MONTHLY LOG', entries, year, month, monthNames, exercises});
-};
+}
+
 async function create(req, res) {
   const month = parseInt(req.body.month) + 1;
   const date = new Date(`${req.body.year}, ${month}, ${req.body.day}`);
@@ -56,4 +58,10 @@ async function create(req, res) {
 async function deleteEntry(req, res) {
   await Entry.findOneAndDelete( {_id: req.params.cookies, user: req.user._id});
   res.redirect('/entries');
+}
+
+async function edit(req, res) {
+  const entry = await Entry.findById(req.params.candy).populate('exercise');
+  const exercises = await Exercise.find({});
+  res.render('entries/edit', {title: 'Edit Entry', entry, exercises})
 }

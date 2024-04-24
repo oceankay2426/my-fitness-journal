@@ -6,5 +6,8 @@ const entriesCtrl = require('../controllers/entries');
 router.post('/', entriesCtrl.create);
 // GET /entries (index function)
 router.get('/', entriesCtrl.index);
+//GET /entries/:id/edit
+router.get('/:candy/edit', entriesCtrl.edit);
+// PUT /entries/:candy
 router.delete('/:cookies', entriesCtrl.delete);
 module.exports = router;

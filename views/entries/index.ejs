@@ -62,10 +62,10 @@
       <option value="angry">angry</option>
       <option value="tired" selected>tired</option>
     </select>
+    <label>ADD NOTES/REPS:</label>
+    <textarea name="notes"></textarea>
     <input type="submit" value="Add To Log">
   </form>
-
-
 
 
   <% if (entries) { %>
@@ -73,8 +73,9 @@
       <thead>
         <tr>
           <th>Day</th>
-          <th>Exercises</th>
+          <th>Exercise</th>
           <th>Mood</th>
+          <th>Notes</th>
           <th></th>
         </tr>
       </thead>
@@ -91,10 +92,14 @@
               <%= entry.mood %>
             </td>
             <td>
+              <%= entry.notes %>
+            </td>
+            <td>
               <a href="/entries/<%= entry._id %>">DETAILS</a>
               <form action="/entries/<%= entry._id %>?_method=DELETE" method="POST" class="delete-form">
                 <button type="submit">X</button>
               </form>
+              <a href="/entries/<%= entry._id %>/edit">EDIT</a>
             </td>
           </tr>
           <% }); %>
