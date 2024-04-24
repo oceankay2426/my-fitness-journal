@@ -1,6 +1,7 @@
 const Entry = require('../models/entry');
 const exercise = require('../models/exercise');
 const Exercise = require('../models/exercise');
+const user = require('../models/user');
 const monthNames = [
   'January', 'February', 'March', 'April',
   'May', 'June', 'July', 'August',
@@ -32,18 +33,20 @@ async function index(req, res) {
   const daysInMo = new Date(year, month + 1, 0).getDate();
   const startDate = new Date(year, month, 1);
   const endDate = new Date(year, month, daysInMo);
-  const entries = await Entry.find({date: {$gte: startDate, $lte: endDate}});
+  const entries = await Entry.find({date: {$gte: startDate, $lte: endDate}}).populate("exercise");
   const exercises = await Exercise.find()
   res.render('entries/index', { title: 'MONTHLY LOG', entries, year, month, monthNames, exercises});
 };
-
 async function create(req, res) {
-  const entry = await Entry.findById(req.params.id);
-  entry.splice(req.body);
+  const month = parseInt(req.body.month) + 1;
+  const date = new Date(`${req.body.year}, ${month}, ${req.body.day}`);
+  req.body.date = date;
+  req.body.user = req.user._id
+  const entry = await Entry.create(req.body)
   try {
     await entry.save();
   } catch (err) {
     console.log(err);
   }
-  res.redirect(`/entries${Entry._id}`);
+  res.redirect(`/entries`);
 }

@@ -8,18 +8,13 @@
   <h3>
     <br><br>Update your journal here
   </h3>
-  <form id="add-review-form" method="POST" action="/entries/<%= entries._id %>/entries">
-    <h3>List of Exercises</h3>
-    <ul>
-      <% entries.forEach(function(entries) { %>
-        <li>
-          <%= exercise.exercise %>
-        </li>
-        <% }); %>
-    </ul>
+  <h3>List of Exercises</h3>
+  <form id="add-review-form" method="POST" action="/entries">
+    <input type="hidden" value="<%= year %>" name="year" />
+    <input type="hidden" value="<%= month %>" name="month" />
     <label>Day:</label>
     <div>
-      <select name="Day">
+      <select name="day">
         <option value="1" selected>1</option>
         <option value="2">2</option>
         <option value="3">3</option>
@@ -53,13 +48,17 @@
         <option value="31">31</option>
       </select>
     </div>
-
-
+    <label>Exercises:</label>
+    <select name="exercise">
+      <%- exercises.map(e=>
+        `<option value="${e._id}">${e.exercise}</option>`
+        ).join('') %>
+    </select>
 
 
 
     <label>Mood Level</label>
-    <select name="Mood level">
+    <select name="mood">
       <option value="happy">happy</option>
       <option value="angry">angry</option>
       <option value="tired" selected>tired</option>
@@ -69,13 +68,13 @@
 
 
 
-  <% if (entries.exercises) { %>
+  <% if (entries) { %>
     <table id="list">
       <thead>
         <tr>
           <th>Day</th>
-          <th>achievements</th>
-          <th>mood</th>
+          <th>Exercises</th>
+          <th>Mood</th>
           <th></th>
         </tr>
       </thead>
@@ -86,7 +85,10 @@
               <%= entry.date %>
             </td>
             <td>
-              <%= entry.achievements %>
+              <%= entry.exercise.exercise %>
+            </td>
+            <td>
+              <%= entry.mood %>
             </td>
             <td><a href="/entries/<%= entry._id %>">Exercise DETAILS</a></td>
           </tr>
