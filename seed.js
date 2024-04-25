@@ -15,9 +15,5 @@ console.log(data);
     const exercises = await Exercise.create(data.exercises);
     console.log(exercises);
 
-
-
-
-
     process.exit();
 })();
