@@ -1,6 +1,7 @@
 
 nav>a {
   display: block;
+  color: white;
   margin-inline: 5% 10%;
   writing-mode: horizontal-tb;
   justify-content: space-evenly;
