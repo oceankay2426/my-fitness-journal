@@ -37,9 +37,8 @@ async function index(req, res) {
   const daysInMo = new Date(year, month + 1, 0).getDate();
   const startDate = new Date(year, month, 1);
   const endDate = new Date(year, month, daysInMo);
-  const entries = await Entry.find({ date: { $gte: startDate, $lte: endDate } }).populate("exercise");
+  const entries = await Entry.find({ date: { $gte: startDate, $lte: endDate }, user: req.user._id }).populate("exercise");
   const exercises = await Exercise.find({});
-  req.body.user = req.user._id
   res.render('entries/index', { title: 'MONTHLY LOG', entries, year, month, monthNames, exercises });
 }
 
