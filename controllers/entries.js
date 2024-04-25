@@ -39,6 +39,7 @@ async function index(req, res) {
   const endDate = new Date(year, month, daysInMo);
   const entries = await Entry.find({ date: { $gte: startDate, $lte: endDate } }).populate("exercise");
   const exercises = await Exercise.find({});
+  req.body.user = req.user._id
   res.render('entries/index', { title: 'MONTHLY LOG', entries, year, month, monthNames, exercises });
 }
 
@@ -62,7 +63,7 @@ async function deleteEntry(req, res) {
 }
 
 async function edit(req, res) {
-  const entry = await Entry.findById(req.params.candy).populate('exercise');
+  const entry = await Entry.findById({_id: req.params.candy, user: req.user._id}).populate('exercise');
   const exercises = await Exercise.find({});
   res.render('entries/edit', { title: 'Edit Day', entry, exercises })
 }
