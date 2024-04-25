@@ -64,7 +64,7 @@ async function deleteEntry(req, res) {
 async function edit(req, res) {
   const entry = await Entry.findById(req.params.candy).populate('exercise');
   const exercises = await Exercise.find({});
-  res.render('entries/edit', { title: 'Edit Entry', entry, exercises })
+  res.render('entries/edit', { title: 'Edit Day', entry, exercises })
 }
 
 async function update(req, res) {

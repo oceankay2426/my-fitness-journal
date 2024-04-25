@@ -54,11 +54,15 @@
 
     <label>Mood Level</label>
     <select name="mood">
-      <option value="happy">happy</option>
-      <option value="angry">angry</option>
-      <option value="tired" selected>tired</option>
+      <option value="Happy">Happy</option>
+      <option value="Angry">Angry</option>
+      <option value="Tired" selected>Tired</option>
+      <option value="Energized">Energized</option>
+      <option value="Motivated">Motivated</option>
+      <option value="Frustration">Frustration</option>
+      <option value="Introspection">Introspection</option>
     </select>
-    <label>ADD NOTES/REPS:</label>
+    <label>NOTES/REPS:</label>
     <textarea name="notes"></textarea>
     <input type="submit" value="Add To Log">
   </form>
@@ -76,7 +80,7 @@
           <th>Day</th>
           <th>Exercise</th>
           <th>Mood</th>
-          <th>Notes</th>
+          <th>Notes/Reps</th>
           <th></th>
         </tr>
       </thead>
@@ -96,11 +100,10 @@
               <%= entry.notes %>
             </td>
             <td>
-              <a href="/entries/<%= entry._id %>">DETAILS</a>
-              <form action="/entries/<%= entry._id %>?_method=DELETE" method="POST" class="delete-form">
-                <button type="submit">X</button>
-              </form>
               <a href="/entries/<%= entry._id %>/edit">EDIT</a>
+              <form action="/entries/<%= entry._id %>?_method=DELETE" method="POST" class="delete-form">
+                <button type="submit">DELETE</button>
+              </form>
             </td>
           </tr>
           <% }); %>

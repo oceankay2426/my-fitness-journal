@@ -48,9 +48,13 @@
 
     <label>Mood Level</label>
     <select name="mood">
-      <option value="happy" <%= entry.mood === 'happy' ? 'selected' : '' %>>happy</option>
-      <option value="angry" <%= entry.mood === 'angry' ? 'selected' : '' %>>angry</option>
-      <option value="tired" <%= entry.mood === 'tired' ? 'selected' : '' %>>tired</option>
+      <option value="Happy" <%= entry.mood === 'Happy' ? 'selected' : '' %>>Happy</option>
+      <option value="Angry" <%= entry.mood === 'Angry' ? 'selected' : '' %>>Angry</option>
+      <option value="Tired" <%= entry.mood === 'Tired' ? 'selected' : '' %>>Tired</option>
+      <option value="Energized" <%= entry.mood === 'Energized' ? 'selected' : '' %>>Energized</option>
+      <option value="Motivated" <%= entry.mood === 'Motivated' ? 'selected' : '' %>>Motivated</option>
+      <option value="Frustration" <%= entry.mood === 'Frustration' ? 'selected' : '' %>>Frustration</option>
+      <option value="Introspection" <%= entry.mood === 'Introspection' ? 'selected' : '' %>>Introspection</option>
     </select>
     <label>ADD NOTES/REPS:</label>
     <textarea name="notes"><%= entry.notes %></textarea>

@@ -12,7 +12,7 @@ const entrySchema = new Schema({
     },
     mood: {
         type: String,
-        enum: ['happy','angry','tired']
+        enum: ['Happy','Angry','Tired','Energized','Motivated','Frustration','Introspection']
     },
     user: {
         type:  Schema.Types.ObjectId, 
