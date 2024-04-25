@@ -3,17 +3,20 @@
   font-family: Helvetica;
   color: #424748;
 }
+
 h1 {
   color: whitesmoke;
   text-align: center;
 }
+
 h1>img {
   object-fit: contain;
   height: 70px;
   width: 80px;
   border-radius: 100%;
-  border: 3px solid transparent;
+  border: 3px solid black;
 }
+
 p {
   color: white;
   text-align: center;
@@ -40,6 +43,13 @@ body>nav {
   grid-template-rows: auto;
 }
 
+nav, a {
+  grid-area: nav;
+  background-color: whitesmoke;
+  justify-content: space-around;
+  text-align: start;
+}
+
 
 body>main {
   grid-area: main;
@@ -54,7 +64,7 @@ body>main {
 
 .login {
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
   height: 34px;
 }
@@ -65,18 +75,34 @@ body>main {
 
 
 h3 {
-  grid-area: footer;
-  color: limegreen;
+  color: black;
+  display: flex;
+  align-items: center;
+  text-decoration: underline;
+  text-decoration-color: black;
+}
+
+form {
+  display: inline-flex ;
+  margin-inline: 5% 10%;
+  writing-mode: horizontal-tb;
+  justify-content: space-between;
+  align-items: center;
+  
+}
+
+h2 {
+  color: white;
   display: flex;
   justify-content: flex-end;
   align-items: center;
 }
 
 table, th, td {
-  border: 1px solid;
+  border: 2px solid black;
   width: 50%;
   text-align: center;
-  tr:hover {background-color: coral;}
+  tr:hover {background-color: aquamarine;}
 }
 
-table {background-color: aqua;}
+table {background-color: whitesmoke;}
