@@ -71,3 +71,12 @@ h3 {
   justify-content: flex-end;
   align-items: center;
 }
+
+table, th, td {
+  border: 1px solid;
+  width: 50%;
+  text-align: center;
+  tr:hover {background-color: coral;}
+}
+
+table {background-color: aqua;}

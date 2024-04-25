@@ -1,7 +1,6 @@
 <%- include('../partials/header') %>
 
-<h3>
-  <br><br>Update Your Journal
+<br><br>Update Your Journal
 </h3>
 <form id="add-review-form" method="POST" action="/entries">
   <input type="hidden" value="<%= year %>" name="year" />
@@ -68,7 +67,6 @@
   </h2>
   
   <% if (entries) { %>
-    <h4>List of Exercises</h4>
     <table id="list">
       <thead>
         <tr>
@@ -103,9 +101,10 @@
             </td>
           </tr>
           <% }); %>
-      </tbody>
-    </table>
-    <% } else { %>
-      <h4>Nothing logged yet</h4>
-      <% } %>
-        <%- include('../partials/footer') %>
+          <% } else { %>
+            <h4>Nothing logged yet</h4>
+            <% } %>
+        </tbody>
+      </table>
+  <h3>
+  <%- include('../partials/footer') %>
