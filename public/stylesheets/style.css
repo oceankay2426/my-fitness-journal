@@ -3,11 +3,21 @@
   font-family: Helvetica;
   color: #424748;
 }
-
-p {
-  color: limegreen;
+h1 {
+  color: whitesmoke;
   text-align: center;
-  background-color: blue;
+}
+h1>img {
+  object-fit: contain;
+  height: 70px;
+  width: 80px;
+  border-radius: 100%;
+  border: 3px solid transparent;
+}
+p {
+  color: white;
+  text-align: center;
+  background-color: transparent;
 
 }
 
@@ -19,7 +29,6 @@ body {
   grid-template-areas:
     "nav"
     "main"
-    "footer"
 }
 
 body>nav {
@@ -29,16 +38,6 @@ body>nav {
   justify-content: flex-end;
   align-items: center;
   grid-template-rows: auto;
-}
-
-body>footer {
-  grid-area: footer;
-  background-color: limegreen;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  background-image: url("https://www.womenfitness.net/wp/wp-content/uploads/2020/02/4-Tips-for-Everyone-To-Have-Fun-Working-Out-2-1.jpg");
-  background-size: cover;
 }
 
 
@@ -64,11 +63,6 @@ body>main {
   height: 30px;
 }
 
-h1>img {
-  width: 67px;
-  object-fit: contain;
-  margin-right: auto;
-}
 
 h3 {
   grid-area: footer;
