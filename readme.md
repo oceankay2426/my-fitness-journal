@@ -61,5 +61,5 @@ Welcome to My Fitness Journal, your ultimate companion on your fitness journey! 
 <h4>ICE BOX</h4>
 
 - [:x:] The user can add in addition exercises other than the the ones already seeded
-- [:x:] tags
+- [:x:] tags beingable to add more then one exercise per day
 - [:x:] user can add in there on physical picture of themselves for reference
