@@ -8,7 +8,7 @@
     <input type="hidden" value="<%= year %>" name="year" />
     <input type="hidden" value="<%= month %>" name="month" />
 
-    <label>Day:</label>
+    <label>&nbsp;&nbsp;Day:&nbsp;&nbsp;</label>
     <div>
       <select name="day">
         <option value="1" selected>1</option>
@@ -45,14 +45,14 @@
       </select>
     </div>
 
-    <label>Exercises:</label>
+    <label>&nbsp;&nbsp;Exercises:&nbsp;&nbsp;</label>
     <select name="exercise">
       <%- exercises.map(e=>
         `<option value="${e._id}">${e.exercise}</option>`
         ).join('') %>
     </select>
 
-    <label>Mood Level</label>
+    <label>&nbsp;&nbsp;Mood Level&nbsp;&nbsp;</label>
     <select name="mood">
       <option value="Happy">Happy</option>
       <option value="Angry">Angry</option>
@@ -62,7 +62,7 @@
       <option value="Frustration">Frustration</option>
       <option value="Introspection">Introspection</option>
     </select>
-    <label>NOTES/REPS:</label>
+    <label>&nbsp;&nbsp;NOTES/REPS:&nbsp;&nbsp;</label>
     <textarea name="notes"></textarea>
     <input type="submit" value="Add To Log">
   </form>
