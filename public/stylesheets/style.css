@@ -120,3 +120,8 @@ td {
 table {
   background-color: whitesmoke;
 }
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+}

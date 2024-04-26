@@ -45,6 +45,7 @@ Welcome to My Fitness Journal, your ultimate companion on your fitness journey! 
       <li>What data entries wold be good for a fitness journal</li>
       <li>Get on setting up what user stories i want to start with </li>
       <li>stay consistan and orgainze with my user data</li>
+      [trello](https://trello.com/b/uC1049YB/project-2-my-fitness-journal)
 </div>
 
   ##  Technologies Used
